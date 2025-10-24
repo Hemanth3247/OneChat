@@ -1,33 +1,23 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Header from './Components/Header.jsx'
+import InputBox from './Components/InputBox.jsx'
+import ChatBox from './Components/ChatBox.jsx'
+import AIModel from './Components/AIModel.jsx'
+import './Components.css'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [convo,setConvo] = useState([
+    {sender:'user',msg:'Hi there!'},{sender:'assistant',msg:'Hello how can i help u'},{sender:'user',msg:'I need assistance with my account.'},{sender:'assistant',msg:'sure if u want to maintain ur account learn or make a Fiattrckr APP'},{sender:'user',msg:'That would be great, thanks!'},{sender:'assistant',msg:'Youre welcome! Let me know if you have any other questions. i am here to help you. and assist you in your journey. and make your life easier. '},{sender:'user',msg:'What services do you offer?'},{sender:'assistant',msg:'We offer a wide range of services including account management, customer support, and financial tracking through our Fiattrckr APP.'},{sender:'user',msg:'How can I contact customer support?'},{sender:'assistant',msg:'...'},{sender:'user',msg:'Hi'}
+  ]);
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Header setConvo={setConvo}/>
+      <div className="conversation">
+        <AIModel />
+        <ChatBox convo={convo} />
+        <InputBox setConvo={setConvo} convo={convo}/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
