@@ -1,18 +1,18 @@
-import 'dotenv/config';
-import Cerebras from '@cerebras/cerebras_cloud_sdk';
+import express from "express";
+import cors from "cors";
+import main from './callapi.js';
 
-const cerebras = new Cerebras({
-  apiKey: process.env.CEREBRAS_API_KEY,
+const PORT = 3000;
+const app = new express();
+app.use(cors());
+app.use(express.json());
+
+app.post("/chat",async (req,res) =>{
+  const chat = req.body;
+  const reply = await main(chat);
+  res.send(reply);
+})
+
+app.listen(PORT, () => {
+  console.log("Server Initiated");
 });
-
-async function main() {
-  const response = await cerebras.chat.completions.create({
-    model: "llama3.1-8b",
-    messages: [{ 
-      role: "user", content: "just give a p Hello! can u explain the smart contracts i etherium" }],
-  });
-
-  console.log(response.choices[0].message.content);
-}
-
-main();
