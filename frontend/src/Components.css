@@ -7,6 +7,9 @@ html,body {
   scrollbar-color: #020202 #212121;
   overflow: hidden;
 }
+p {
+  margin: 0;
+}
 
 .header {
   border: 1px solid #000000;
@@ -32,7 +35,9 @@ html,body {
   font-size: xx-large;
   margin-left: 15px;
   font-weight: 500;
-  margin-right: 80%;
+}
+.intermediate {
+  width:80%
 }
 .chat-reset {
   background-color: #0e0e0e;
@@ -101,7 +106,7 @@ html,body {
   margin-top: 15px;
 }
 .chat {
-  width: 650px;
+  width: 900px;
   margin: auto;
   margin-bottom: 20px;
   margin-top: 10px;
@@ -118,23 +123,25 @@ html,body {
 }
 .assistantmessagebox {
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 
 }
 .usermessagebox{
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   justify-content: end;
 }
 .msgtext {
-  max-width:450px;
+  max-width:600px;
   width:fit-content;
   height: fit-content;
   background-color: #0e0e0e;
-  padding: 15px 15px;
+  padding: 20px 20px;
+  padding-top: 15px;
   border-radius: 20px;
   margin: 10px;
   margin-top: 0;
+  font-size: medium;
   text-align: left;
 }
 
@@ -163,7 +170,7 @@ html,body {
   align-items: center;
   height: fit-content;
   min-height: 60px;
-  width: 650px;
+  width: 800px;
   border: 1px solid #383838;
   border-radius: 24px;
   background-color: #000000;
@@ -179,7 +186,7 @@ html,body {
   align-items: center;
   height: fit-content;
   min-height: 60px;
-  width: 650px;
+  width: 800px;
   border: 1px solid #383838;
   border-radius: 24px;
   background-color: #000000;
@@ -231,3 +238,46 @@ html,body {
   height: 28px;
   align-content: center;
 }
+
+@media (max-width:600px) {
+  .intermediate {
+    width:40%
+  }
+  .chat {
+    width:70%
+  }
+  .inputbox-centre {
+    width: 70%;
+  }
+  .inputbox-bottom {
+    width: 70%;
+  }
+  .input {
+    width: 60%;
+  }
+}
+
+@media (min-width:601px) and (max-width:1000px) {
+  .intermediate {
+    width: 60%;
+  }
+  .chat {
+    width:70%
+  }
+  .inputbox-centre {
+    width: 70%;
+  }
+  .inputbox-bottom {
+    width: 70%;
+  }
+  .input {
+    width: 60%;
+  }
+}
+
+@media (min-width:1001px) and (max-width:1200px) {
+  .intermediate {
+    width:75%
+  }
+}
+

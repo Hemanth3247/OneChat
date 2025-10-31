@@ -4,15 +4,37 @@ import send from '../assets/icon/Send.png';
 
 function InputBox({setConvo,convo}) {
   const [text,setText] = useState("");
-  function sendtext() {
+  async function sendtext() {
     if (text.trim() === "") {
       return;
     } else {
       setConvo(preconvo => [...preconvo,{sender:'user',msg:text}]);
       setText("");
+      const serverresp = await transmit([...convo,{sender:'user',msg:text}]);
+      setConvo(preconvo => [...preconvo,{sender:"assistant",msg:serverresp}]);
     }
   }
-  if (convo,length === 0) {
+
+  async function transmit(chat) {
+  const cerchat = chat.map(con => ({
+    "role": con.sender, 
+    "content": con.msg
+  }));
+  try {
+    const response = await fetch("https://apicall-k7f3.onrender.com/chat",{
+      method: "POST",
+      headers: {"Content-type":"application/json"},
+      body: JSON.stringify(cerchat)
+    });
+    const data = await response.text();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+
+
+  }
+  if (convo.length === 0) {
     return (
       <div className='inputbox-centre'>
         <textarea value={text} onChange={(e) => {
@@ -50,5 +72,6 @@ function InputBox({setConvo,convo}) {
     )
   }
 }
+
 
 export default InputBox;
