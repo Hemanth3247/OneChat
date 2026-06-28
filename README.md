@@ -1,7 +1,7 @@
 # 🚀 OneChat
 
 A modern full-stack chat application powered by **React**, **Vite**, **Express**, and **Cerebras AI**. OneChat delivers intelligent, real-time conversations with AI-driven responses.
-[Visit the Website](onechat.online)
+[Visit the Website](https://onechat.online)
 
 ## 📋 Overview
 
